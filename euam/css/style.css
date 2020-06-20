@@ -2035,7 +2035,7 @@ body {
 
 .title--h1,
 .b-content__title,
-.b-banner__title,
+.b-main-image__title,
 .b-not-found__title {
   font-weight: 700;
   margin: 0;
@@ -3987,7 +3987,7 @@ textarea:focus {
   margin-bottom: 0;
 }
 
-.b-banner {
+.b-main-image {
   position: relative;
   -webkit-box-align: end;
       -ms-flex-align: end;
@@ -4000,20 +4000,20 @@ textarea:focus {
   padding: 6.25rem 0 0;
 }
 
-.b-banner::after {
+.b-main-image::after {
   min-height: 17.375rem;
   content: '';
 }
 
-.b-banner--large {
+.b-main-image--large {
   min-height: 28.9375rem;
 }
 
-.b-banner--large::after {
+.b-main-image--large::after {
   min-height: 28.9375rem;
 }
 
-.b-banner__picture {
+.b-main-image__picture {
   position: absolute;
   top: 0;
   right: 0;
@@ -4026,7 +4026,7 @@ textarea:focus {
   width: 100%;
 }
 
-.b-banner__picture::after {
+.b-main-image__picture::after {
   position: absolute;
   top: 0;
   right: 0;
@@ -4038,22 +4038,22 @@ textarea:focus {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.296137), rgba(0, 0, 0, 0.296137)), linear-gradient(270deg, rgba(0, 0, 0, 0.0001) 41.26%, rgba(0, 0, 0, 0.7) 100%);
 }
 
-.b-banner__content {
+.b-main-image__content {
   position: relative;
   max-width: 56.25rem;
   padding: 2.5rem;
   color: #fff;
 }
 
-.b-banner__title {
+.b-main-image__title {
   margin-bottom: 0.9375rem;
 }
 
-.b-banner__title:only-child {
+.b-main-image__title:only-child {
   margin: 0;
 }
 
-.b-banner__text {
+.b-main-image__text {
   display: block;
   font-size: 1.125rem;
   letter-spacing: 0.3375px;
@@ -6240,7 +6240,7 @@ textarea:focus {
 @media (max-width: 1023.98px) {
   .title--h1,
   .b-content__title,
-  .b-banner__title,
+  .b-main-image__title,
   .b-not-found__title {
     font-size: 2rem;
     line-height: 2.3125rem;
@@ -6314,20 +6314,20 @@ textarea:focus {
     padding: 0;
   }
 
-  .b-banner--large .b-banner__title {
+  .b-main-image--large .b-main-image__title {
     font-size: 2rem;
     line-height: 2.3125rem;
   }
 
-  .b-banner__content {
+  .b-main-image__content {
     padding: 1.875rem;
   }
 
-  .b-banner__title {
+  .b-main-image__title {
     margin-bottom: 1.25rem;
   }
 
-  .b-banner__text {
+  .b-main-image__text {
     font-size: 1rem;
     line-height: 1.1875rem;
   }
@@ -6486,11 +6486,11 @@ textarea:focus {
     line-height: 1.5rem;
   }
 
-  .b-banner--large {
+  .b-main-image--large {
     margin-bottom: -1.8125rem;
   }
 
-  .b-banner__title {
+  .b-main-image__title {
     font-size: 2.5rem;
     line-height: 2.9375rem;
   }
