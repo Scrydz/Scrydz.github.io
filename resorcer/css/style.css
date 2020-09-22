@@ -1581,8 +1581,8 @@ input[type=number]::-webkit-outer-spin-button {
 
 .b-header__mobile {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 100%;
-          flex: 0 0 100%;
+      -ms-flex: 0 1 100%;
+          flex: 0 1 100%;
   max-width: 100%;
 }
 
