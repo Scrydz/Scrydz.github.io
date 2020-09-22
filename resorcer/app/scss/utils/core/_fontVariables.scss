@@ -1,0 +1,27 @@
+// Global fonts variables
+$globalFontSize: 16px !default;
+$globalLineHeight: 1.2 !default;
+
+
+$globalFontSize--14: 14px !default;
+$globalFontSize--12: 12px !default;
+$globalFontSize--16: 14px !default;
+$globalFontSize--20: 20px !default;
+$globalFontSize--24: 24px !default;
+$globalFontSize--28: 28px !default;
+$globalFontSize--32: 32px !default;
+$globalFontSize--36: 36px !default;
+$globalFontSize--40: 40px !default;
+
+$globalLineHeight--32: 32px !default;
+$globalLineHeight--36: 36px !default;
+$globalLineHeight--40: 40px !default;
+$globalLineHeight--44: 44px !default;
+$globalLineHeight--48: 48px !default;
+
+$globalFontRegular: 400 !default;
+$globalFontMedium: 500 !default;
+$globalFontSemiBold: 600 !default;
+$globalFontBold: 700 !default;
+
+$globalFontsPath: '../fonts/' !default;  // path to the fonts folder. slash in the end is required

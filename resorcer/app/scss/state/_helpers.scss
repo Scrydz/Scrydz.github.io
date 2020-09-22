@@ -1,0 +1,29 @@
+// Note: !important keyword can be used for properties in this file
+// sass-lint:disable no-important
+
+.is-hide {
+    display: none !important;
+}
+
+.is-show {
+    display: block !important;
+}
+
+.is-hidden {
+    visibility: hidden;
+    height: 0;
+    opacity: 0;
+}
+
+.is-scroll-disabled {
+    overflow: hidden;
+
+    @include grid-breakpoint-down(lg) {
+        @include fixed(top 0 right 0 left 0);
+
+        width: 100%;
+        height: 100%;
+    }
+}
+
+// sass-lint:enable no-important

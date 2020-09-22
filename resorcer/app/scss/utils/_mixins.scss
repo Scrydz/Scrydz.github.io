@@ -1,0 +1,183 @@
+// Basic Typography
+
+@mixin heading($type: h1) {
+    font-weight: $globalFontSemiBold;
+    margin: 0;
+
+    @if $type == h1 {
+        font-size: rem($globalFontSize--40);
+        line-height: rem($globalLineHeight--48);
+
+        @include grid-breakpoint-down(lg) {
+            font-size: rem($globalFontSize--36);
+            line-height: rem($globalLineHeight--44);
+        }
+    }
+
+    @if $type == h2 {
+        font-size: rem($globalFontSize--32);
+        line-height: rem($globalLineHeight--48);
+
+        @include grid-breakpoint-down(lg) {
+            font-size: rem($globalFontSize--28);
+            line-height: rem($globalLineHeight--40);
+        }
+    }
+
+    @if $type == h3 {
+        font-size: rem($globalFontSize--24);
+        line-height: rem($globalLineHeight--36);
+
+        @include grid-breakpoint-down(lg) {
+            font-size: rem($globalFontSize--20);
+            line-height: rem($globalLineHeight--32);
+        }
+    }
+}
+
+@mixin middleX {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@mixin middleY {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@mixin hover {
+    @include grid-breakpoint-up(lg) {
+        &:hover {
+            @content;
+        }
+    }
+}
+
+@mixin position($position, $args: ()) {
+    $offsets: top right bottom left;
+
+    position: $position;
+
+    @each $offset in $offsets {
+        $index: index($args, $offset);
+
+        @if $index {
+            @if $index == length($args) {
+                #{$offset}: 0;
+            } @else {
+                $next: nth($args, $index + 1);
+
+                @if is-valid-length($next) {
+                    #{$offset}: $next;
+                } @else if index($offsets, $next) {
+                    #{$offset}: 0;
+                } @else {
+                    @warn 'Invalid value #{$next} for offset #{$offset}';
+                }
+            }
+        }
+    }
+}
+
+@mixin absolute($args: ()) {
+    @include position(absolute, $args);
+}
+
+@mixin fixed($args: ()) {
+    @include position(fixed, $args);
+}
+
+@mixin relative($args: ()) {
+    @include position(relative, $args);
+}
+
+@mixin sticky($args: ()) {
+    @include position(sticky, $args);
+}
+
+@mixin scrollbar($thumb_bg: $globalColorBlack, $thumb_bg_window: $globalColorBlack, $track_bg: $globalColorBlack, $width: 8px) {
+    scrollbar-color: $globalColorBlack $globalColorBlack;
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+        width: $width;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $track_bg;
+    }
+
+    /*Handle*/
+    &::-webkit-scrollbar-thumb {
+        background: $thumb_bg;
+    }
+
+    &::-webkit-scrollbar-thumb:window-inactive {
+        background: $thumb_bg_window;
+    }
+}
+
+@mixin backgroundPicture {
+    @include absolute(top 0 left 0 right 0 bottom 0);
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}
+
+@mixin flexCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin size($width, $height: $width) {
+    width: rem($width);
+    height: rem($height);
+}
+
+@mixin only_ie11_above($selector, $map) {
+    #{'_:-ms-fullscreen, :root '} #{$selector} {
+        @each $property, $value in ($map) {
+            #{$property}: $value;
+        }
+    }
+}
+
+// Usage:   @include transition(width, height 0.3s ease-in-out);
+// Output:  -webkit-transition(width 0.2s, height 0.3s ease-in-out);
+//          transition(width 0.2s, height 0.3s ease-in-out);
+//
+// Pass in any number of transitions
+@mixin transition($transitions...) {
+    $unfoldedTransitions: ();
+    @each $transition in $transitions {
+        $unfoldedTransitions: append($unfoldedTransitions, unfoldTransition($transition), comma);
+    }
+
+    -webkit-transition: $unfoldedTransitions;
+    transition: $unfoldedTransitions;
+}
+
+@function unfoldTransition ($transition) {
+    $property: all;
+    $duration: .3s;
+    $easing: null;
+    $delay: null;
+    $defaultProperties: ($property, $duration, $easing, $delay);
+
+    $unfoldedTransition: ();
+    @for $i from 1 through length($defaultProperties) {
+        $p: null;
+        @if $i <= length($transition) {
+            $p: nth($transition, $i)
+        } @else {
+            $p: nth($defaultProperties, $i)
+        }
+        $unfoldedTransition: append($unfoldedTransition, $p);
+    }
+
+    @return $unfoldedTransition;
+}

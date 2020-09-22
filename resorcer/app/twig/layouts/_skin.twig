@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    {% include "../includes/_styles.twig" %}
+</head>
+<body>
+
+<div class="s-wrapper">
+
+    <div class="b-wrapper">
+
+        <main class="s-main">
+            <div class="s-header">
+                {% include "../layouts/_header.twig" %}
+            </div>
+
+            <div class="s-content">
+                <div class="b-content">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        </main>
+
+        {% include "../layouts/_footer.twig" %}
+
+    </div>
+
+</div>
+
+{% include "../includes/_scripts.twig" %}
+
+</body>
+</html>

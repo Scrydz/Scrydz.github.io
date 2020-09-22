@@ -1,0 +1,127 @@
+@mixin form-element($type) {
+    @if $type == 'input' {
+        @include generic-input;
+    } @else if $type == 'select' {
+        @include generic-input;
+
+        -webkit-appearance: menulist;
+    } @else {
+        @warn 'Invalid argument $type: #{$type}';
+    }
+}
+
+@mixin generic-input {
+    @include placeholder($siteThemeColor);
+
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background: $colorWhite;
+    border-radius: rem(4);
+    border: rem(1) solid $colorBlue--8B;
+    color: $siteThemeColor;
+    display: block;
+    filter: drop-shadow(2px 2px 4px rgba(84, 147, 158, 0.15));
+    font-size: rem(14);
+    letter-spacing: 0.371429px;
+    min-height: rem(41);
+    outline: none;
+    padding: rem(12 19);
+    width: 100%;
+
+    &[disabled] {
+        pointer-events: none;
+    }
+}
+
+.select2 {
+    width: 100% !important;
+}
+
+.select2-container {
+    $this: &;
+
+    &--default {
+        .select2-selection {
+            border: rem(1) solid $colorBlue--8B;
+            height: rem(41);
+
+            .select2-selection__rendered {
+                color: $siteThemeColor;
+                font-size: rem(14);
+                height: rem(40);
+                padding: rem(12 19);
+                line-height: 1;
+                text-align: left;
+            }
+
+            .select2-selection__placeholder {
+                color: $siteThemeColor;
+            }
+
+            .select2-selection__arrow {
+                @extend .icon-angle-down;
+                @include size(40);
+
+                top: 0;
+                right: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &::before {
+                    color: $siteThemeColor;
+                    font-size: rem(10);
+                }
+
+                b {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &--open {
+        .select2-selection {
+            .select2-selection__arrow {
+                @extend .icon-angle-up;
+            }
+        }
+    }
+
+    .select2-dropdown {
+        border-color: $colorBlue--8B;
+
+        .select2-results {
+            &__option {
+                padding: rem(12 19);
+                font-size: rem(14);
+                color: $siteThemeColor;
+
+                &[aria-selected=true] {
+                    background-color: $siteThemeColor;
+                    color: $colorWhite;
+                }
+
+                &--highlighted {
+                    background-color: $siteThemeColor;
+                    color: $colorWhite;
+                }
+            }
+        }
+    }
+}
+
+input[type=password],
+input[type=text],
+input[type=email],
+input[type=number],
+input[type=tel] {
+    @include form-element('input');
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

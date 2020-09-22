@@ -1,0 +1,60 @@
+* {
+    box-sizing: border-box;
+
+    &::before,
+    &::after {
+        box-sizing: border-box;
+    }
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+picture {
+    width: 100%;
+}
+
+b,
+strong {
+    font-weight: $globalFontBold;
+}
+
+i,
+em {
+    font-style: italic;
+}
+
+button {
+    border: 0;
+    outline: 0;
+}
+
+[role='button'],
+[tabindex] {
+    outline: none;
+}
+
+.list {
+    margin: 0;
+    padding: 0;
+
+    li {
+        list-style: none;
+
+        a {
+            text-decoration: none;
+        }
+    }
+}

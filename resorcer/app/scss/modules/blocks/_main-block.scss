@@ -1,0 +1,78 @@
+.b-main-block {
+    padding-top: rem(10);
+
+    @include grid-breakpoint-down(md) {
+        margin-bottom: rem(50);
+        text-align: center;
+    }
+
+    &__container {
+        display: flex;
+        overflow: hidden;
+    }
+
+    &__content {
+        flex: 0 0 50%;
+        margin-top: rem(40);
+        max-width: 50%;
+        padding: rem(30 10 30 0);
+
+        @include grid-breakpoint-down(lg) {
+            margin-top: 0;
+        }
+
+        @include grid-breakpoint-down(md) {
+            flex: 0 0 100%;
+            max-width: 100%;
+            padding: rem(30 0);
+        }
+    }
+
+    &__picture {
+        flex: 0 0 50%;
+        max-width: 50%;
+        margin: rem(-45 20 -20 0);
+
+        @include grid-breakpoint-down(md) {
+            display: none;
+        }
+    }
+
+    &__title {
+        @extend .title--h1;
+
+        margin-bottom: rem(25);
+    }
+
+    &__text {
+        font-size: rem(18);
+        line-height: rem(27);
+        display: block;
+    }
+
+    &__button {
+        margin-top: rem(20);
+    }
+}
+
+.typewrite {
+    color: $siteThemeColor;
+}
+
+.typed-cursor {
+    animation: blink 0.7s infinite;
+    color: $siteThemeColor;
+    display: inline-block;
+}
+
+@keyframes blink{
+    0%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}

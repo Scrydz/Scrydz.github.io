@@ -1,0 +1,314 @@
+.s-header {
+    @include fixed(top 0 left 0);
+
+    margin: auto;
+    width: 100%;
+    background-color: $colorWhite;
+    z-index: $zIndex--20;
+
+}
+
+.b-header {
+    border-bottom: rem(1) solid rgba(0, 0, 0, 0.05);
+
+    &__container {
+        align-items: center;
+        display: flex;
+        height: rem(74);
+        padding: rem(17 15);
+
+        @include grid-breakpoint-down(md) {
+            flex-wrap: wrap;
+            height: auto;
+            padding: rem(12 15);
+        }
+    }
+
+    &__mobile {
+        flex: 0 0 100%;
+        max-width: 100%;
+
+        @include grid-breakpoint-down(md) {
+            padding: rem(20 0);
+        }
+    }
+
+    &__logo {
+        max-width: rem(162);
+        margin: rem(-4 45 0 0);
+        flex-shrink: 0;
+
+        @include grid-breakpoint-down(md) {
+            margin: 0;
+        }
+    }
+
+    &__right {
+        @include grid-breakpoint-up(lg) {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+    }
+
+    &__language {
+        margin-right: rem(15);
+
+        @include grid-breakpoint-down(md) {
+            margin: 0;
+        }
+    }
+
+    &__login {
+        margin-right: rem(45);
+    }
+
+    &__register {
+        @include grid-breakpoint-down(md) {
+            margin-top: rem(20);
+        }
+    }
+}
+
+.b-header-nav {
+    display: flex;
+
+    @include grid-breakpoint-down(md) {
+        flex-direction: column;
+        margin-bottom: rem(15);
+    }
+
+    &__item {
+        & + & {
+            margin-left: rem(50);
+
+            @include grid-breakpoint-down(md) {
+                margin: rem(15 0 0);
+            }
+        }
+    }
+
+    &__link {
+        @include transition(color .3s ease);
+        @include relative();
+
+        line-height: rem(20);
+        font-weight: $globalFontMedium;
+
+        &::after {
+            @include absolute(bottom rem(-7) left 0);
+            @include transition(transform .3s ease);
+
+            content: "";
+            width: 100%;
+            height: rem(2);
+            background-color: $siteThemeColor;
+            transform: scaleX(0) translateY(0);
+        }
+
+        @include hover {
+            &::after {
+                transform: scaleX(1) translateY(0);
+            }
+        }
+    }
+}
+
+.b-header-login {
+    @include relative();
+    @include transition(color .3s ease);
+
+    text-decoration: none;
+    display: block;
+    font-weight: $globalFontMedium;
+
+    @include grid-breakpoint-down(md) {
+        margin-bottom: rem(20);
+    }
+
+    &::after {
+        @include absolute(bottom rem(-7) left 0);
+        @include transition(transform .3s ease);
+
+        content: "";
+        width: 100%;
+        height: rem(2);
+        background-color: $siteThemeColor;
+        transform: scaleX(0) translateY(0);
+    }
+
+    @include hover {
+        &::after {
+            transform: scaleX(1) translateY(0);
+        }
+    }
+}
+
+.b-header-language {
+    $this: &;
+
+    @include relative();
+
+    &__selected {
+        @extend .icon-angle-down;
+
+        align-items: center;
+        border-radius: rem(4);
+        cursor: pointer;
+        display: flex;
+        font-weight: $globalFontMedium;
+        line-height: rem(20);
+
+        @include grid-breakpoint-up(lg) {
+            @include transition(background .3s ease, color .3s ease, border-color .3s ease);
+
+            border: rem(1) solid $colorBlue--8B;
+            color: $siteThemeColor;
+            filter: drop-shadow(2px 2px 4px rgba(84, 147, 158, 0.15));
+            font-weight: $globalFontSemiBold;
+            padding: rem(10 13 9 17);
+        }
+
+        &.active {
+            @extend .icon-angle-up;
+
+            @include grid-breakpoint-up(lg) {
+                background: $siteThemeColor;
+                color: $colorWhite;
+            }
+        }
+
+        @include hover {
+            background: $siteThemeColor;
+            border-color: $siteThemeColor;
+            color: $colorWhite;
+        }
+
+        &::before {
+            order: 1;
+            font-size: rem(10);
+            margin-left: rem(7);
+        }
+    }
+}
+
+.b-header-dropdown {
+    background-color: $colorWhite;
+    border-radius: rem(4);
+    display: none;
+    width: rem(134);
+
+    @include grid-breakpoint-up(lg) {
+        @include absolute(top rem(45) right 0);
+
+        border: rem(1) solid rgba(0, 0, 0, 0.05);
+        box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.08);
+        z-index: $zIndex--1;
+    }
+
+    &__link {
+        @include transition(background .3s ease, color .3s ease);
+
+        display: block;
+        font-weight: $globalFontMedium;
+        line-height: rem(20);
+        padding: rem(15 20);
+
+        @include hover {
+            background: $siteThemeColor;
+            color: $colorWhite;
+        }
+    }
+
+    &__nav {
+        perspective: 1000px;
+
+        li {
+            transform-origin: top center;
+            opacity: 0;
+
+            @for $i from 1 through 6 {
+                &:nth-child(#{$i}) {
+                    animation: {
+                        name: language;
+                        delay: 150ms * $i - 300;
+                        duration: 300ms;
+                        fill-mode: forwards;
+                        timing-function: ease-in-out;
+                    };
+                }
+            }
+        }
+    }
+}
+
+.b-header-mobile {
+    align-items: center;
+    display: flex;
+
+    @include grid-breakpoint-down(md) {
+        display: none;
+    }
+}
+
+.b-header-menu {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    margin-left: auto;
+
+    &__label {
+        font-size: rem(14);
+        font-weight: $globalFontMedium;
+        margin-right: rem(5);
+    }
+}
+
+.b-header-humburger {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    padding: 0;
+
+    .line {
+        fill: none;
+        stroke: $colorBlack;
+        stroke-width: 6;
+        transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+        stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .line1 {
+        stroke-dasharray: 60 207;
+        stroke-width: 6;
+    }
+
+    .line2 {
+        stroke-dasharray: 60 60;
+        stroke-width: 6;
+    }
+
+    .line3 {
+        stroke-dasharray: 60 207;
+        stroke-width: 6;
+    }
+
+    &.active {
+        .line1 {
+            stroke-dasharray: 90 207;
+            stroke-dashoffset: -134;
+            stroke-width: 6;
+        }
+        .line2 {
+            stroke-dasharray: 1 60;
+            stroke-dashoffset: -30;
+            stroke-width: 6;
+        }
+        .line3 {
+            stroke-dasharray: 90 207;
+            stroke-dashoffset: -134;
+            stroke-width: 6;
+        }
+    }
+}

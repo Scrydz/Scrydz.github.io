@@ -1,0 +1,148 @@
+// Grid system mixins
+//
+// This section describes grid system mixins used for development in the project.
+//
+// Weight: 4
+//
+// Style guide: sass.gridMixins
+//
+// Part: gridMixins
+
+// grid-breakpoint-up($name, $breakpoints)
+//
+// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
+// Makes the @content apply to the given breakpoint and wider.
+//
+// $name = required - {String}; Should contains breakpoint shorthand. Possible values  - sm, md, lg, xl.
+// $breakpoints = $gridBreakpoints - {Map}; The map which contains breakpoints matrix.
+// @content = required - styles should be added
+//
+// Weight: 1
+//
+// Style guide: sass.gridMixins.gridBreakpointUp
+//
+// Part: gridMixins
+
+@mixin grid-breakpoint-up($name, $breakpoints: $gridBreakpoints) {
+    $min: grid-breakpoint-min($name, $breakpoints);
+
+    @if $min {
+        @media (min-width: $min) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+
+// grid-breakpoint-down($name, $isLandscape, $breakpoints)
+//
+// Media of at most the maximum breakpoint width. No query for the largest breakpoint.
+// Makes the @content apply to the given breakpoint and narrower.
+//
+// $name = required - {String}; Should contains breakpoint shorthand. Possible values  - sm, md, lg, xl.
+// $isLandscape = false - {Boolean}; Add additional condition for landscape orientation.
+// $breakpoints = $gridBreakpoints - {Map}; The map which contains breakpoints matrix.
+// @content = required - styles should be added
+//
+// Weight: 2
+//
+// Style guide: sass.gridMixins.gridBreakpointDown
+//
+// Part: gridMixins
+
+@mixin grid-breakpoint-down($name, $isLandscape: false, $breakpoints: $gridBreakpoints) {
+    $max: grid-breakpoint-max($name, $breakpoints);
+
+    @if $max {
+        @if $isLandscape {
+            @media (max-width: $max) and (orientation: landscape) {
+                @content;
+            }
+        } @else {
+            @media (max-width: $max) {
+                @content;
+            }
+        }
+    }
+}
+
+// grid-breakpoint-between($lower, $upper, $breakpoints)
+//
+// Media that spans multiple breakpoint widths.
+// Makes the @content apply between the min and max breakpoints
+//
+// $lower = required - {String}; Should contains breakpoint shorthand. Possible values  - sm, md, lg, xl.
+// $upper = required - {String}; Should contains breakpoint shorthand. Possible values  - sm, md, lg, xl.
+// $breakpoints = $gridBreakpoints - {Map}; The map which contains breakpoints matrix.
+// @content = required - styles should be added
+//
+// Weight: 3
+//
+// Style guide: sass.gridMixins.gridBreakpointBetween
+//
+// Part: gridMixins
+
+@mixin grid-breakpoint-between($lower, $upper, $breakpoints: $gridBreakpoints) {
+    $min: grid-breakpoint-min($lower, $breakpoints);
+    $max: grid-breakpoint-max($upper, $breakpoints);
+
+    @if $min != null and $max != null {
+        @media (min-width: $min) and (max-width: $max) {
+            @content;
+        }
+    } @else if $max == null {
+        @include grid-breakpoint-up($lower, $breakpoints) {
+            @content;
+        }
+    } @else if $min == null {
+        @include grid-breakpoint-down($upper, false, $breakpoints) {
+            @content;
+        }
+    }
+}
+
+// grid-breakpoint-only($name, $breakpoints)
+//
+// Media between the breakpoint's minimum and maximum widths.
+// No minimum for the smallest breakpoint, and no maximum for the largest one.
+// Makes the @content apply only to the given breakpoint, not viewports any wider or narrower.
+//
+// $name = required - {String}; Should contains breakpoint shorthand. Possible values  - sm, md, lg, xl.
+// $breakpoints = $gridBreakpoints - {Map}; The map which contains breakpoints matrix.
+// @content = required - styles should be added
+//
+// Weight: 4
+//
+// Style guide: sass.gridMixins.gridBreakpointOnly
+//
+// Part: gridMixins
+
+@mixin grid-breakpoint-only($name, $breakpoints: $gridBreakpoints) {
+    $min: grid-breakpoint-min($name, $breakpoints);
+    $max: grid-breakpoint-max($name, $breakpoints);
+
+    @if $min != null and $max != null {
+        @media (min-width: $min) and (max-width: $max) {
+            @content;
+        }
+    } @else if $max == null {
+        @include grid-breakpoint-up($name, $breakpoints) {
+            @content;
+        }
+    } @else if $min == null {
+        @include grid-breakpoint-down($name, false, $breakpoints) {
+            @content;
+        }
+    }
+}
+
+@each $breakpoint in map-keys($gridBreakpoints) {
+    @include grid-breakpoint-up($breakpoint) {
+        $suffix: grid-breakpoint-suffix($breakpoint, $gridBreakpoints);
+
+        @each $value in $displays {
+            .d#{$suffix}-#{$value} { display: $value !important; }
+        }
+    }
+}

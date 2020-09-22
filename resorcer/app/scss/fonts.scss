@@ -1,0 +1,10 @@
+@charset "UTF-8"; // sass-lint:disable-line quotes
+// We need this CSS file with fonts declaration to make it possible to
+// load it from the same domain as the original site.
+// We have to do it due to cross-domain issue http://davidwalsh.name/cdn-fonts
+// Don't do it if you have a control over a Web Server headers
+
+@import './utils/core/settings';
+@import './utils/settings';
+
+@include generate-font-face($siteFontsData, $siteFontsPath);

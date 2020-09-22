@@ -1,0 +1,37 @@
+// Site fonts variables
+//$siteFontSize: $globalFontSize;
+$siteFontSize: $globalFontSize;
+$siteLineHeight: $globalLineHeight;
+$siteDefaultFonts: Helvetica, Arial, sans-serif; // fonts used by default for OS
+$siteFontsPath: '../fonts/' !default; // path to the fonts folder. slash in the end is required
+$siteBaseFont: 'Montserrat'; // main fontName
+$siteIconFont: 'iconfont';
+
+$siteFontsData: (
+    // 2nd and 3rd parameter below is used for the local copy of this font on user device;
+    // if the user does not have that font installed (two different names are tried),
+    // then the downloadable font is used instead.
+
+    // e.g.
+    // $font-name: (
+    //   1: (
+    //     'fileNameType',
+    //     'Local Font Name Type',
+    //     'LocalFontFame-Type',
+    //     'font-weight for this type',
+    //     'font-style for this type(null by default(not italic), use var $isItalic for italic fonts)'
+    //   )
+    // * each such row for different types of one font.
+    // * key for rows should be a number which incremented and starts from - 1
+    // * each parameter is required
+    // )
+
+    $siteBaseFont: ( // key it is font name which use in 'font-family' property
+        1: ('Montserrat-Regular', 'Montserrat', 'Montserrat-egular', $globalFontRegular, null),
+        2: ('Montserrat-Medium', 'Montserrat Medium', 'Montserrat-Medium', $globalFontMedium, null),
+        3: ('Montserrat-SemiBold', 'Montserrat SemiBold', 'Montserrat-SemiBold', $globalFontSemiBold, null),
+        4: ('Montserrat-Bold', 'Montserrat Bold', 'Montserrat-Bold', $globalFontBold, null)
+    )
+);
+
+$siteFontFamily: $siteBaseFont, $siteDefaultFonts;

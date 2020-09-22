@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+@import './utils/core/settings';
+@import './utils/grid/settings';
+@import './utils/settings';
+@import './utils/animation';
+
+@import 'fonts';
+
+// Libraries
+@import './libraries/iconfont';
+@import './libraries/normalize';
+@import './libraries/select2';
+
+// Core
+@import './core/global';
+
+// Typography
+@import './core/typography';
+
+// Layout (Grid system)
+@import './layout/container';
+@import './layout/grid';
+
+// Components
+@import './components/form';
+@import './components/buttons';
+@import './components/base';
+
+//state
+@import './state/helpers';
+
+//Modules
+@import './modules/global-header/header';
+@import './modules/global-footer/footer';
+
+@import './modules/blocks/main-block';
+@import './modules/blocks/content-image';
+@import './modules/blocks/content-work';
+@import './modules/blocks/content-benefits';
+@import './modules/blocks/сontent-price';
+

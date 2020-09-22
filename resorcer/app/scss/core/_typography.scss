@@ -1,0 +1,32 @@
+:root {
+    font-size: 16px;
+}
+
+body {
+    color: $siteTextColor;
+    font-family: $siteFontFamily, helvetica, arial, sans-serif;
+    font-size: rem($siteFontSize);
+    font-weight: $globalFontRegular;
+    line-height: $siteLineHeight;
+}
+
+//h1,
+.title--h1 {
+    @include heading(h1);
+}
+
+//h2,
+.title--h2 {
+    @include heading(h2);
+}
+
+//h3,
+.title--h3 {
+    @include heading(h3);
+}
+
+a {
+    color: inherit;
+}
+
+

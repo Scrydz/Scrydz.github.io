@@ -1,0 +1,47 @@
+.b-content-price {
+    background: $colorGrey--FB;
+    padding: rem(45 0);
+    text-align: center;
+
+    &__title {
+        margin-bottom: rem(20);
+    }
+
+    &__subtitle {
+        font-size: rem(18);
+        line-height: rem(27);
+        margin: auto;
+        max-width: rem(480);
+    }
+
+    &__button {
+        margin-top: rem(10);
+    }
+
+    &__other {
+        color: rgba($colorBlack, .6);
+        display: block;
+        font-size: rem(13);
+        line-height: rem(19);
+        margin: rem(20) auto 0;
+        max-width: rem(480);
+    }
+}
+
+.b-content-form {
+    display: flex;
+    justify-content: center;
+    margin: rem(30 0 20);
+
+    &__item {
+        min-width: rem(280);
+
+        & + & {
+            margin-left: rem(40);
+        }
+    }
+}
+
+.count {
+    margin-right: rem(5);
+}
