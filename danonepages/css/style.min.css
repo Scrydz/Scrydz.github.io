@@ -3041,6 +3041,10 @@ body {
     min-height: 1.875rem;
   }
 
+  .b-footer__logo {
+    max-width: 7.5rem;
+  }
+
   .b-main-logo {
     max-width: 6.6875rem;
   }
