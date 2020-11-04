@@ -321,8 +321,8 @@
 .b-development-table__list:before,
 .b-development-table__list--down:before,
 .b-stream-chat__send:before,
-.b-support-item--open .b-support-item__headline:before,
-.b-support-item__headline:before {
+.b-support-item__label:before,
+.g-accordion__switcher:checked ~ .b-support-item__headline .b-support-item__label:before {
   font-family: "iconfont", sans-serif;
   font-style: normal;
   font-variant: normal;
@@ -1567,7 +1567,7 @@ body {
 .b-motivation {
   padding: 3.75rem 0;
   background: url("../img/motiv-bg.png") top center no-repeat;
-  background-size: cover !important;
+  background-size: cover;
 }
 
 .b-motivation__title {
@@ -1641,6 +1641,10 @@ body {
 }
 
 .b-quiz-item {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 50%;
+          flex: 0 0 50%;
+  max-width: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1653,10 +1657,6 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 50%;
-          flex: 1 1 50%;
-  max-width: 50%;
 }
 
 .b-quiz-item__title {
@@ -1678,7 +1678,7 @@ body {
 .b-material {
   text-align: center;
   background: url("../img/material-bg.png") top center no-repeat;
-  background-size: cover !important;
+  background-size: cover;
 }
 
 .b-material__content {
@@ -1707,7 +1707,7 @@ body {
 
 .b-background__content {
   color: #fff;
-  padding: 7.5rem 0 3.75rem;
+  padding: 7.5rem 1.25rem 3.75rem;
   text-align: center;
 }
 
@@ -2274,10 +2274,11 @@ body {
 }
 
 .b-support {
+  background-image: url("../img/support-bg.png");
   background-position: left center;
   background-repeat: no-repeat;
-  padding: 7.5rem 0;
   min-height: 54.375rem;
+  padding: 7.5rem 0;
 }
 
 .b-support__content {
@@ -2293,27 +2294,11 @@ body {
   margin-bottom: 0.9375rem;
 }
 
-.b-support-item {
-  cursor: pointer;
-}
-
-.b-support-item--open .b-support-item__headline {
-  color: #009FE3;
-}
-
-.b-support-item--open .b-support-item__headline:before {
-  content: "";
-}
-
-.b-support-item--open .b-support-item__container {
-  padding-top: 1.25rem;
-}
-
 .b-support-item + .b-support-item {
   margin-top: 1.875rem;
 }
 
-.b-support-item__headline {
+.b-support-item__label {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -2326,11 +2311,19 @@ body {
   line-height: 1.75rem;
 }
 
-.b-support-item__headline:before {
+.b-support-item__label:before {
   content: "";
 }
 
-.b-support-item__headline::before {
+.g-accordion__switcher:checked ~ .b-support-item__headline .b-support-item__label {
+  color: #009FE3;
+}
+
+.g-accordion__switcher:checked ~ .b-support-item__headline .b-support-item__label:before {
+  content: "";
+}
+
+.b-support-item__label::before {
   font-size: 0.75rem;
   font-weight: 700;
   margin-left: 0.9375rem;
@@ -2378,7 +2371,9 @@ body {
 
 .g-accordion__label {
   position: relative;
-  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   cursor: pointer;
 }
 
@@ -2865,6 +2860,11 @@ body {
 }
 
 @media (max-width: 1365.98px) {
+  .title--h1 {
+    font-size: 3.5rem;
+    line-height: 3.875rem;
+  }
+
   .is-scroll-disabled {
     position: fixed;
     top: 0;
@@ -2878,8 +2878,76 @@ body {
     margin-left: 1.875rem;
   }
 
+  .b-footer__copyright:last-child {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+  }
+
   .b-footer-nav__item + .b-footer-nav__item {
     margin-left: 1.875rem;
+  }
+
+  .b-motivation {
+    background-size: contain;
+    padding: 1.875rem 0;
+  }
+
+  .b-motivation__title {
+    margin-bottom: 2.5rem;
+  }
+
+  .b-quiz__content {
+    padding: 5.3125rem 0;
+  }
+
+  .b-quiz-item {
+    padding: 0 0.625rem;
+  }
+
+  .b-material {
+    background-size: contain;
+  }
+
+  .b-background__container {
+    padding: 0;
+  }
+
+  .b-hero__content {
+    margin: auto 0;
+    padding: 0 3.125rem 0 0;
+  }
+
+  .b-hero__development {
+    padding-top: 0;
+  }
+
+  .b-development-table__item {
+    padding: 0 0.625rem 1.875rem 1.875rem;
+  }
+
+  .b-stream {
+    background-size: contain;
+  }
+
+  .b-hero__content {
+    margin: auto 0;
+    padding: 0 3.125rem 0 0;
+  }
+
+  .b-hero__development {
+    padding-top: 0;
+  }
+
+  .b-support {
+    min-height: auto;
+    background: transparent;
+    padding: 5rem 0;
+  }
+
+  .b-support__content {
+    max-width: auto;
+    margin: 0;
   }
 }
 
@@ -2896,6 +2964,19 @@ body {
 
   .f-label {
     font-size: 0.5rem;
+  }
+
+  .f-button-learn {
+    font-size: 0.75rem;
+  }
+
+  .f-button-learn::before {
+    right: calc(1.3375rem);
+  }
+
+  .f-button-learn::after {
+    width: 2.25rem;
+    height: 2.25rem;
   }
 
   .b-header__container {
@@ -3026,9 +3107,87 @@ body {
   .b-main-container .b-main-logo {
     margin-bottom: 4.0625rem;
   }
+
+  .b-motivation__items {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+
+  .b-motivation-item {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
+            flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .b-hero__content {
+    padding: 0;
+  }
+
+  .b-hero__img {
+    max-width: 42.5rem;
+  }
+
+  .b-development-table {
+    margin: 2.5rem 0 1.25rem;
+  }
+
+  .b-development-table__time {
+    font-size: 0.875rem;
+  }
+
+  .b-development-table__list {
+    font-size: 0.875rem;
+  }
+
+  .b-stream__container {
+    padding: 0;
+  }
+
+  .b-stream-content {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    padding: 0;
+  }
+
+  .b-stream-content__frame {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .b-stream-content__frame .video-container {
+    border-radius: 0;
+  }
+
+  .b-stream-content__chat {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+    max-width: 100%;
+    margin: 1.25rem 0 0;
+  }
+
+  .b-stream-chat {
+    border-radius: 0;
+  }
+
+  .b-hero__content {
+    padding: 0;
+  }
+
+  .b-hero__img {
+    max-width: 42.5rem;
+  }
 }
 
 @media (max-width: 767.98px) {
+  .title--h1 {
+    font-size: 2.75rem;
+    line-height: 2.9375rem;
+  }
+
   .f-button {
     font-size: 0.875rem;
     min-height: 3.0625rem;
@@ -3127,6 +3286,22 @@ body {
   .b-main-copyright {
     font-size: 0.625rem;
     line-height: 1.25rem;
+  }
+
+  .b-support {
+    padding: 1.25rem 0 3.75rem;
+  }
+
+  .b-support__title {
+    font-size: 1.5rem;
+  }
+
+  .b-support-item__label {
+    font-size: 1rem;
+  }
+
+  .b-support-item__text {
+    font-size: 0.875rem;
   }
 }
 
