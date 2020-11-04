@@ -3042,6 +3042,7 @@ body {
   }
 
   .b-footer__logo {
+    margin-right: 0.625rem;
     max-width: 7.5rem;
   }
 
@@ -3126,6 +3127,13 @@ body {
   .b-main-copyright {
     font-size: 0.625rem;
     line-height: 1.25rem;
+  }
+}
+
+@media (max-width: 374.98px) {
+  .b-footer__copyright-text {
+    font-size: 0.625rem;
+    line-height: 1rem;
   }
 }
 
