@@ -1624,23 +1624,14 @@ body {
 .b-main-form {
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url("../img/form-start.png");
   color: #fff;
   margin-bottom: 2.5rem;
   max-width: 53.125rem;
-  min-height: 36.25rem;
   width: 100%;
 }
 
 .b-main-form--success {
-  background-image: url("../img/form-success.png");
-  min-height: 31.5625rem;
   margin: auto;
-}
-
-.b-main-form--rules {
-  background-image: url("../img/form-rules.png");
-  min-height: 55rem;
 }
 
 .b-main-form--rules .b-main-form__subtitle {
@@ -2000,18 +1991,15 @@ body {
   margin-bottom: 1.875rem;
 }
 
-.b-moments__image-wrap {
-  position: relative;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 50%;
-          flex: 0 0 50%;
-  max-width: 50%;
-}
-
-.b-moments__image {
+.b-moments__slider {
   position: absolute;
   right: -0.625rem;
   bottom: -3.4375rem;
+  max-width: 547px;
+}
+
+.b-moments__slider-item {
+  outline: none;
 }
 
 .b-moments__button {
@@ -2251,7 +2239,6 @@ body {
 .b-stream {
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .b-stream__title {
@@ -2798,6 +2785,21 @@ body {
     padding-bottom: 6.25rem !important;
   }
 
+  .b-main-form {
+    background-image: url("../img/form-start.png");
+    min-height: 36.25rem;
+  }
+
+  .b-main-form--success {
+    background-image: url("../img/form-success.png");
+    min-height: 31.5625rem;
+  }
+
+  .b-main-form--rules {
+    background-image: url("../img/form-rules.png");
+    min-height: 55rem;
+  }
+
   .b-main-form--rules .b-main-form__container {
     padding-top: 5.625rem;
     max-width: 37.5rem;
@@ -2814,6 +2816,10 @@ body {
 
   .b-background--purple .b-background__background {
     background-image: url("../img/purple-bg.png");
+  }
+
+  .b-moments {
+    background-image: url("../img/moments-bg.png");
   }
 
   .b-hero {
@@ -2843,6 +2849,11 @@ body {
     -webkit-box-shadow: 0 0 0 0.25rem #fff;
             box-shadow: 0 0 0 0.25rem #fff;
     content: '';
+  }
+
+  .b-stream {
+    background-image: url("../img/stream-bg.png");
+    background-size: cover;
   }
 
   .b-hero {
@@ -3519,7 +3530,7 @@ body {
 
   .b-main-logo {
     max-width: 6.6875rem;
-    margin: auto;
+    margin: 0 auto;
   }
 
   .b-main-form {
@@ -3633,7 +3644,12 @@ body {
   }
 
   .b-motivation-item__image {
+    border-radius: 1.5rem;
     margin-bottom: 1.5625rem;
+  }
+
+  .b-motivation-item__image img {
+    width: 100%;
   }
 
   .b-quiz__content {
